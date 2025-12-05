@@ -1,0 +1,142 @@
+import React from 'react';
+import { User, DollarSign, TrendingUp, Target, Briefcase, Crown, ArrowRight, ShieldAlert, Scale } from 'lucide-react';
+
+export const OldVsNewMindset: React.FC = () => {
+  return (
+    <div className="flex flex-col md:flex-row gap-8 w-full">
+      {/* Old Way */}
+      <div className="flex-1 border-2 border-dashed border-gray-400 p-4 opacity-70 grayscale hover:grayscale-0 transition-all">
+        <h3 className="font-comic text-xl mb-4 text-center">O "RH Paizão" (Errado)</h3>
+        <div className="flex flex-col items-center gap-4">
+          <div className="bg-gray-200 p-4 rounded-full">
+            <User size={48} />
+          </div>
+          <ArrowRight className="rotate-90 md:rotate-0" />
+          <div className="text-center">
+            <p className="font-bold">Foco:</p>
+            <p className="text-sm">Felicidade do Colaborador como FIM.</p>
+          </div>
+          <div className="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">
+            RESULTADO: SINDICALISMO INTERNO
+          </div>
+        </div>
+      </div>
+
+      {/* New Way */}
+      <div className="flex-1 border-4 border-black bg-brand-yellow p-4 shadow-comic-sm">
+        <h3 className="font-comic text-xl mb-4 text-center">O RH Estratégico (Correto)</h3>
+        <div className="flex flex-col items-center gap-4">
+          <div className="bg-white border-2 border-black p-4 rounded-full">
+            <Crown size={48} className="text-black" />
+          </div>
+          <ArrowRight className="rotate-90 md:rotate-0" />
+          <div className="text-center">
+            <p className="font-bold">Foco:</p>
+            <p className="text-sm">Resultado da Empresa (Lucro).</p>
+          </div>
+          <div className="bg-black text-white text-xs font-bold px-2 py-1 rounded">
+            RESULTADO: SUSTENTABILIDADE & CRESCIMENTO
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const OwnerBurden: React.FC = () => {
+  return (
+    <div className="w-full bg-white border-4 border-black p-6 shadow-comic relative overflow-hidden">
+      <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1">RISCO TOTAL</div>
+      
+      <div className="flex flex-col items-center">
+        {/* The Weight */}
+        <div className="bg-black text-white p-4 w-48 text-center rounded-lg mb-1 animate-pulse border-b-8 border-gray-800">
+          <div className="flex justify-center mb-1"><ShieldAlert className="text-red-500" /></div>
+          <h4 className="font-black text-xl uppercase">Passivo Trabalhista</h4>
+          <h4 className="font-black text-xl uppercase">Folha de Pagamento</h4>
+          <h4 className="font-black text-xl uppercase">Falência</h4>
+        </div>
+        
+        {/* The Arrow Force */}
+        <ArrowRight className="rotate-90 text-red-600 w-12 h-12 -my-2" strokeWidth={3} />
+
+        {/* The Owner */}
+        <div className="relative mt-2">
+           <div className="w-20 h-20 bg-brand-yellow rounded-full border-4 border-black flex items-center justify-center relative z-10">
+             <span className="font-comic text-xs text-center leading-none">DONO /<br/>SÓCIO</span>
+           </div>
+           {/* Sweat drops */}
+           <div className="absolute -right-2 top-0 text-blue-400 font-bold text-lg animate-bounce">💧</div>
+           <div className="absolute -left-2 top-4 text-blue-400 font-bold text-lg animate-bounce delay-100">💧</div>
+        </div>
+
+        <div className="mt-4 text-center max-w-sm">
+          <p className="text-sm font-bold">O peso de perder tudo (casa, carro, reputação) está aqui.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const StrategicFlow: React.FC = () => {
+  return (
+    <div className="w-full py-8">
+      <h3 className="font-comic text-2xl text-center mb-8 uppercase">O Fluxo da Realidade</h3>
+      <div className="relative flex flex-col items-center">
+        
+        {/* Step 1: Owners */}
+        <div className="z-10 bg-black text-white p-6 border-4 border-black w-64 text-center shadow-comic">
+          <Crown className="mx-auto mb-2" size={32} />
+          <h4 className="font-bold text-lg">ACIONISTAS</h4>
+          <p className="text-xs mt-2">Investem capital esperando retorno (ROI).</p>
+        </div>
+
+        <div className="h-12 w-1 bg-black"></div>
+
+        {/* Step 2: The Goal */}
+        <div className="z-10 bg-white text-black p-4 border-4 border-black w-64 text-center shadow-comic-sm">
+          <Target className="mx-auto mb-2" size={24} />
+          <h4 className="font-bold">METAS DE NEGÓCIO</h4>
+          <p className="text-xs text-gray-600">O que precisa ser atingido.</p>
+        </div>
+
+        <div className="h-12 w-1 bg-black"></div>
+
+        {/* Step 3: HR Intervention */}
+        <div className="z-10 bg-brand-red text-white p-6 border-4 border-black w-72 text-center shadow-comic relative">
+          <div className="absolute -left-12 top-1/2 -translate-y-1/2 hidden md:block">
+	<div className="bg-white text-black border-2 border-black p-2 text-xs font-bold whitespace-nowrap">
+	  SEU PAPEL AQUI -&gt;
+	</div>
+          </div>
+          <Briefcase className="mx-auto mb-2" size={32} />
+          <h4 className="font-bold text-xl">GESTÃO DE RECURSOS</h4>
+          <p className="text-sm mt-2 font-semibold">Otimizar a máquina humana.</p>
+        </div>
+
+        <div className="h-12 w-1 bg-black"></div>
+
+        {/* Step 4: The Asset */}
+        <div className="z-10 bg-white text-black p-4 border-4 border-black w-64 text-center shadow-comic-sm">
+          <div className="flex justify-center gap-2 mb-2">
+            <User size={24} />
+            <User size={24} />
+            <User size={24} />
+          </div>
+          <h4 className="font-bold">COLABORADORES</h4>
+          <p className="text-xs text-gray-600">O meio para atingir a meta.</p>
+        </div>
+
+        <div className="h-12 w-1 bg-black"></div>
+
+        {/* Step 5: Profit */}
+        <div className="z-10 bg-brand-yellow text-black p-6 border-4 border-black w-64 text-center shadow-comic">
+          <DollarSign className="mx-auto mb-2" size={32} />
+          <h4 className="font-bold text-lg">LUCRO & RESULTADO</h4>
+          <p className="text-xs mt-2">O objetivo final que paga os salários.</p>
+        </div>
+
+      </div>
+    </div>
+  );
+};
