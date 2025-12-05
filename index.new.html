@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>RH Estratégico – A Verdade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --brand-red: #ff1744;
+      --brand-yellow: #ffd600;
+      --brand-dark: #111827;
+      --brand-bg: #f4f4f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--brand-bg);
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #ffe5e5, #ffffff 40%, #e0f2fe 80%);
+    }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 3px solid #000;
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.7rem;
+      border: 3px solid #000;
+      background: #fff;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 0;
+      height: 2px;
+      background: #000;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+    }
+
+    .menu-line {
+      width: 20px;
+      height: 2px;
+      background: #000;
+      margin: 3px 0;
+    }
+
+    /* LAYOUT GERAL */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Impact", "Anton", system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      background: #000;
+      color: #fff;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      line-height: 1.05;
+      text-shadow: 4px 4px 0 #000;
+      color: var(--brand-yellow);
+      -webkit-text-stroke: 2px #000;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      font-weight: 600;
+      max-width: 26rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 4px solid #000;
+      padding: 0.9rem 1.7rem;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      box-shadow: 6px 6px 0 #000;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translate(4px, 4px);
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .hero-cta span {
+      margin-left: 0.4rem;
+      font-size: 1.2rem;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 0.75rem;
+    }
+
+    .hero-side {
+      background: #fff;
+      border: 4px solid #000;
+      box-shadow: 10px 10px 0 #000;
+      padding: 1.25rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.75rem;
+    }
+
+    .label-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--brand-red);
+    }
+
+    .speech-bubble {
+      position: relative;
+      background: #fff7d6;
+      border: 3px solid #000;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      bottom: -10px;
+      border-width: 10px 10px 0 0;
+      border-style: solid;
+      border-color: #000 transparent transparent transparent;
+    }
+
+    .speech-bubble::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      bottom: -6px;
+      border-width: 8px 8px 0 0;
+      border-style: solid;
+      border-color: #fff7d6 transparent transparent transparent;
+      z-index: 1;
+    }
+
+    .hero-side-small {
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+    /* PAINÉIS / QUADRINHOS */
+    .chapter-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: #000;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .chapter-title {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .comic-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .panel {
+      border-radius: 14px;
+      border: 3px solid #000;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 6px 6px 0 #000;
+      position: relative;
+    }
+
+    .panel.alert {
+      background: var(--brand-red);
+      color: #fff;
+    }
+
+    .panel.secondary {
+      background: var(--brand-yellow);
+      color: #000;
+    }
+
+    .panel.dark {
+      background: var(--brand-dark);
+      color: #fff;
+    }
+
+    .panel h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .panel p {
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .list {
+      margin: 0.5rem 0 0 1rem;
+      font-size: 0.9rem;
+    }
+
+    .list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* INFOGRÁFICOS SIMPLES */
+    .flow {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .flow-step {
+      border-radius: 10px;
+      border: 2px solid #000;
+      padding: 0.6rem 0.75rem;
+      background: #fff;
+      font-size: 0.9rem;
+    }
+
+    .flow-step h4 {
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 3px solid #000;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    footer strong {
+      text-transform: uppercase;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .comic-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: #fff;
+        border-bottom: 3px solid #000;
+        padding: 0.75rem 1.25rem 1rem;
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo">RH Estratégico</div>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="#intro">Início</a>
+          <a href="#problem">O Erro</a>
+          <a href="#mindset">Vire o Dono</a>
+          <a href="#strategy">A Prática</a>
+        </nav>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <div class="menu-line"></div>
+          <div class="menu-line"></div>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="intro">
+        <div class="hero">
+          <div>
+            <div class="hero-tag">Graphic novel corporativa</div>
+            <h1 class="hero-title">VOCÊ TRABALHA<br>PARA QUEM?</h1>
+            <p class="hero-sub">
+              A dura verdade que separa o RH operacional do verdadeiro RH Estratégico.
+            </p>
+            <button class="hero-cta" data-scroll="#problem">
+              Descobrir a Verdade <span>↓</span>
+            </button>
+            <p class="hero-note">
+              Leia como se fosse uma história em quadrinhos sobre o seu papel dentro da empresa.
+            </p>
+          </div>
+
+          <aside class="hero-side">
+            <div class="label">
+              <span class="label-dot"></span>
+              <span>Capítulo 0 – Cena de abertura</span>
+            </div>
+            <div class="speech-bubble">
+              "Eu sou o advogado do povo aqui dentro. Se a empresa não cuidar bem dos colaboradores, eu vou brigar por eles."
+            </div>
+            <p class="hero-side-small">
+              Se essa frase já passou pela sua cabeça, esta página é para você. Talvez você esteja
+              vestindo a camisa errada — e sendo visto apenas como o "departamento de festa" da empresa.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CAPÍTULO 1 – A CRISE DE IDENTIDADE -->
+      <section id="problem">
+        <div class="chapter-header">
+          <div class="chapter-number">1</div>
+          <h2 class="chapter-title">A Crise de Identidade</h2>
+        </div>
+
+        <p>
+          Muitos profissionais de RH acreditam que são o "Advogado do Povo". Sentem que sua missão é
+          proteger os colaboradores da empresa, garantindo felicidade a qualquer custo.
+        </p>
+
+        <div class="comic-grid">
+          <div class="panel secondary">
+            <h3>O Sintoma Comum</h3>
+            <p>
+              "Se a empresa não der frutas, massagem e happy hour, os funcionários vão ficar tristes.
+              Meu trabalho é brigar por eles!"
+            </p>
+            <ul class="list">
+              <li>Defender benefícios sem mostrar retorno.</li>
+              <li>Focar mais em clima do que em resultado.</li>
+              <li>Comprar brigas que o dono nunca compraria.</li>
+            </ul>
+          </div>
+
+          <div class="panel alert">
+            <span class="badge">Erro fatal</span>
+            <p>
+              Ao pensar assim, o RH se torna um obstáculo para o negócio, visto pela diretoria apenas
+              como um "centro de custo" ou o "departamento de festas".
+            </p>
+            <p style="margin-top:0.5rem;font-weight:700;">
+              Resultado: o RH perde voz em decisões estratégicas e só é chamado
+              quando o problema já explodiu.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAPÍTULO 2 – QUEM ASSINA O CHEQUE -->
+      <section>
+        <div class="chapter-header">
+          <div class="chapter-number">2</div>
+          <h2 class="chapter-title">Quem assina o cheque?</h2>
+        </div>
+
+        <div class="comic-grid">
+          <div class="panel">
+            <h3>A realidade nua e crua</h3>
+            <p>
+              O RH é um departamento da empresa. A empresa pertence aos sócios/acionistas.
+              O seu cliente NÃO é o colaborador. O seu cliente é o <strong>dono do negócio</strong>.
+            </p>
+            <p style="margin-top:0.5rem;">
+              Isso pode soar frio, mas é a lógica fundamental do capitalismo corporativo: o objetivo
+              da empresa não é "ser uma família". É gerar lucro para garantir sua própria
+              sobrevivência e crescimento.
+            </p>
+          </div>
+
+          <div class="panel dark">
+            <h3>O objetivo final</h3>
+            <p>
+              Sem lucro, não há salários. Sem salários, não há colaboradores para "cuidar".
+            </p>
+            <ul class="list">
+              <li>Lucro paga folha.</li>
+              <li>Lucro paga benefícios.</li>
+              <li>Lucro garante estabilidade.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAPÍTULO 2.5 – VISTA A PELE DO DONO -->
+      <section id="mindset">
+        <div class="chapter-header">
+          <div class="chapter-number">2.5</div>
+          <h2 class="chapter-title">Vista a pele do dono</h2>
+        </div>
+
+        <div class="comic-grid">
+          <div class="panel">
+            <h3>Mudança de mindset</h3>
+            <p>
+              Para ser estratégico, você precisa parar de pensar como empregado e começar a
+              <strong>sentir</strong> como o patrão.
+            </p>
+            <p style="margin-top:0.4rem;">
+              Imagine:
+              <em>"Você hipotecou sua casa. Pegou empréstimo no banco. Se a empresa não vender
+              este mês, você perde TUDO. Sua família fica sem teto."</em>
+            </p>
+            <p style="margin-top:0.4rem;">
+              Essa é a realidade do dono. É esse medo que ele sente quando acorda.
+            </p>
+          </div>
+
+          <div class="panel alert">
+            <h3>Quando o RH vira ameaça</h3>
+            <p>
+              Quando o RH chega pedindo "mais benefícios" sem mostrar o retorno (ROI),
+              o dono não vê "cuidado com pessoas". Ele vê <strong>ameaça</strong>.
+            </p>
+            <p style="margin-top:0.4rem;">
+              Ele vê alguém gastando o dinheiro que poderia salvar a empresa.
+            </p>
+            <p style="margin-top:0.6rem;font-weight:700;">
+              O RH Estratégico assume as dores do negócio como se fossem suas.
+              Ele protege o caixa. Ele exige performance.
+            </p>
+            <p style="margin-top:0.4rem;">
+              A pergunta de ouro:
+              <br><strong>"Se esse dinheiro fosse 100% MEU, eu gastaria nisso?"</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAPÍTULO 3 – A LÓGICA DA ENGRENAGEM -->
+      <section id="strategy">
+        <div class="chapter-header">
+          <div class="chapter-number">3</div>
+          <h2 class="chapter-title">A lógica da engrenagem</h2>
+        </div>
+
+        <p>
+          Agora que você pensa como dono, entenda o papel dos colaboradores.
+          Eles são o <strong>meio</strong>, não o fim.
+        </p>
+
+        <div class="flow">
+          <div class="flow-step">
+            <h4>1. Acionistas</h4>
+            <p>Investem capital esperando retorno (ROI).</p>
+          </div>
+          <div class="flow-step">
+            <h4>2. Metas de negócio</h4>
+            <p>O que precisa ser atingido para justificar o risco do investimento.</p>
+          </div>
+          <div class="flow-step">
+            <h4>3. Seu papel – Gestão de recursos</h4>
+            <p>
+              Aqui entra o RH. Seu trabalho é otimizar a máquina humana para que as metas
+              sejam atingidas com o menor risco e o maior lucro possível.
+            </p>
+          </div>
+          <div class="flow-step">
+            <h4>4. Colaboradores</h4>
+            <p>São o meio para atingir a meta. Não são "a família", são o time de alta performance.</p>
+          </div>
+          <div class="flow-step">
+            <h4>5. Lucro &amp; Resultado</h4>
+            <p>
+              É o objetivo final que paga salários, benefícios, expansão e sobrevivência do negócio.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;" class="comic-grid">
+          <div class="panel secondary">
+            <h3>Contratação</h3>
+            <p>
+              Não contrate quem é apenas "legal". Contrate quem traz mais resultado financeiro
+              para o negócio.
+            </p>
+          </div>
+          <div class="panel secondary">
+            <h3>Treinamento</h3>
+            <p>
+              Não treine por treinar. Treine para consertar falhas na produção de lucro.
+            </p>
+          </div>
+          <div class="panel secondary">
+            <h3>Retenção</h3>
+            <p>
+              Mantenha talentos porque perdê-los custa caro para o caixa, não apenas por bondade.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCLUSÃO -->
+      <section>
+        <div class="panel dark">
+          <h3>O grande paradoxo</h3>
+          <p>
+            "Quando o RH foca no resultado do PATRÃO, a empresa lucra mais.
+            Quando a empresa lucra, ela pode pagar melhor e oferecer mais aos colaboradores."
+          </p>
+          <p style="margin-top:0.6rem;">
+            O RH Estratégico cuida das pessoas
+            <strong>EXATAMENTE PORQUE DEFENDE O BOLSO DO DONO.</strong>
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          © 2024 <strong>RH Estratégico</strong>. Baseado em conceitos modernos de gestão de pessoas e negócios.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // scroll suave
+    document.querySelectorAll("[data-scroll]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.querySelector(btn.getAttribute("data-scroll"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    // menu mobile
+    var toggle = document.getElementById("menu-toggle");
+    var links = document.getElementById("nav-links");
+
+    if (toggle && links) {
+      toggle.addEventListener("click", function () {
+        links.classList.toggle("open");
+      });
+
+      links.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          links.classList.remove("open");
+        });
+      });
+    }
+  </script>
+</body>
+</html>
