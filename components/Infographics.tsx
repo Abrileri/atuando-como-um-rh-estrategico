@@ -105,9 +105,9 @@ export const StrategicFlow: React.FC = () => {
         {/* Step 3: HR Intervention */}
         <div className="z-10 bg-brand-red text-white p-6 border-4 border-black w-72 text-center shadow-comic relative">
           <div className="absolute -left-12 top-1/2 -translate-y-1/2 hidden md:block">
-            <div className="bg-white text-black border-2 border-black p-2 text-xs font-bold whitespace-nowrap">
-              SEU PAPEL AQUI ->
-            </div>
+	<div className="bg-white text-black border-2 border-black p-2 text-xs font-bold whitespace-nowrap">
+	  SEU PAPEL AQUI -&gt;
+	</div>
           </div>
           <Briefcase className="mx-auto mb-2" size={32} />
           <h4 className="font-bold text-xl">GESTÃO DE RECURSOS</h4>
